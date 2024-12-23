@@ -222,3 +222,4 @@ The implementation of Humanoid-Gym relies on resources from [legged_gym](https:/
 ## Any Questions?
 
 If you have any more questions, please contact [support@robotera.com](mailto:support@robotera.com) or create an issue in this repository.
+# humanoid-gym-modified
