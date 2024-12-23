@@ -1,0 +1,150 @@
+{
+    "os": "Linux-5.15.0-119-generic-x86_64-with-glibc2.17",
+    "python": "3.8.19",
+    "heartbeatAt": "2024-12-11T12:43:14.562275",
+    "startedAt": "2024-12-11T12:43:12.096738",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--task=pandaman_ppo"
+    ],
+    "state": "running",
+    "program": "train.py",
+    "codePathLocal": "train.py",
+    "codePath": "humanoid/scripts/train.py",
+    "git": {
+        "remote": "https://github.com/roboterax/humanoid-gym.git",
+        "commit": "ae46e201c85a2b17e7f2cea59a441dae7ea88a8f"
+    },
+    "email": null,
+    "root": "/home/lee/humanoid-gym",
+    "host": "lee-ROG",
+    "username": "lee",
+    "executable": "/home/lee/anaconda3/envs/humanoid/bin/python",
+    "cpu_count": 14,
+    "cpu_count_logical": 20,
+    "cpu_freq": {
+        "current": 2836.87365,
+        "min": 400.0,
+        "max": 4480.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 4900.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 4900.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 4900.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 4900.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 5000.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3788.582,
+            "min": 400.0,
+            "max": 5000.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 5000.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 4900.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 4900.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 4900.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 4900.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 3800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 3800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 3800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 3800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 3800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 3800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 3800.0
+        },
+        {
+            "current": 2900.0,
+            "min": 400.0,
+            "max": 3800.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 479.5459442138672,
+            "used": 246.4433364868164
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 3080 Ti Laptop GPU",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3080 Ti Laptop GPU",
+            "memory_total": 17179869184
+        }
+    ],
+    "memory": {
+        "total": 31.005390167236328
+    }
+}

@@ -35,8 +35,10 @@ from .base.legged_robot import LeggedRobot
 
 from .custom.humanoid_config import XBotLCfg, XBotLCfgPPO
 from .custom.humanoid_env import XBotLFreeEnv
-
+from .custom.pandaman_config import PandamanCfg, PandamanCfgPPO
+from .custom.pandaman_env import PandamanFreeEnv
 from humanoid.utils.task_registry import task_registry
 
 
 task_registry.register( "humanoid_ppo", XBotLFreeEnv, XBotLCfg(), XBotLCfgPPO() )
+task_registry.register( "pandaman_ppo", PandamanFreeEnv, PandamanCfg(), PandamanCfgPPO() )

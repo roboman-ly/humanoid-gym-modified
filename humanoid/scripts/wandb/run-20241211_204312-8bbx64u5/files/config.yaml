@@ -1,0 +1,362 @@
+wandb_version: 1
+
+algorithm:
+  desc: null
+  value:
+    clip_param: 0.2
+    desired_kl: 0.01
+    entropy_coef: 0.001
+    gamma: 0.994
+    lam: 0.9
+    learning_rate: 1.0e-05
+    max_grad_norm: 1.0
+    num_learning_epochs: 2
+    num_mini_batches: 4
+    schedule: adaptive
+    use_clipped_value_loss: true
+    value_loss_coef: 1.0
+init_member_classes:
+  desc: null
+  value: {}
+policy:
+  desc: null
+  value:
+    actor_hidden_dims:
+    - 512
+    - 256
+    - 128
+    critic_hidden_dims:
+    - 768
+    - 256
+    - 128
+    init_noise_std: 1.0
+runner:
+  desc: null
+  value:
+    algorithm_class_name: PPO
+    checkpoint: -1
+    experiment_name: Pandaman_ppo
+    load_run: -1
+    max_iterations: 3001
+    num_steps_per_env: 60
+    policy_class_name: ActorCritic
+    resume: false
+    resume_path: null
+    run_name: ''
+    save_interval: 100
+runner_class_name:
+  desc: null
+  value: OnPolicyRunner
+seed:
+  desc: null
+  value: 5
+asset:
+  desc: null
+  value:
+    angular_damping: 0.0
+    armature: 0.0
+    collapse_fixed_joints: true
+    default_dof_drive_mode: 3
+    density: 0.001
+    disable_gravity: false
+    file: '{LEGGED_GYM_ROOT_DIR}/resources/robots/pandaman/urdf/pandaman.urdf'
+    fix_base_link: false
+    flip_visual_attachments: false
+    foot_name: ankle
+    knee_name: knee
+    linear_damping: 0.0
+    max_angular_velocity: 1000.0
+    max_linear_velocity: 1000.0
+    name: Pandaman
+    penalize_contacts_on:
+    - base_link
+    replace_cylinder_with_capsule: false
+    self_collisions: 0
+    terminate_after_contacts_on:
+    - base_link
+    thickness: 0.01
+commands:
+  desc: null
+  value:
+    curriculum: false
+    heading_command: true
+    max_curriculum: 1.0
+    num_commands: 4
+    ranges:
+      ang_vel_yaw:
+      - -0.3
+      - 0.3
+      heading:
+      - -3.14
+      - 3.14
+      lin_vel_x:
+      - -0.3
+      - 0.6
+      lin_vel_y:
+      - -0.3
+      - 0.3
+    resampling_time: 8.0
+control:
+  desc: null
+  value:
+    action_scale: 0.25
+    damping:
+      leg_roll: 0.15
+      leg_pitch: 0.15
+      leg_yaw: 0.15
+      knee: 0.15
+      ankle: 0.15
+    decimation: 10
+    stiffness:
+      leg_roll: 20.0
+      leg_pitch: 20.0
+      leg_yaw: 20.0
+      knee: 20.0
+      ankle: 10
+domain_rand:
+  desc: null
+  value:
+    action_delay: 0.5
+    action_noise: 0.02
+    added_mass_range:
+    - -0.1
+    - 0.1
+    friction_range:
+    - 0.1
+    - 2.0
+    max_push_ang_vel: 0.4
+    max_push_vel_xy: 0.2
+    push_interval: 400.0
+    push_interval_s: 4
+    push_robots: true
+    randomize_base_mass: true
+    randomize_friction: true
+env:
+  desc: null
+  value:
+    c_frame_stack: 3
+    env_spacing: 3.0
+    episode_length_s: 24
+    frame_stack: 15
+    num_actions: 10
+    num_envs: 4096
+    num_observations: 615
+    num_privileged_obs: 195
+    num_single_obs: 41
+    send_timeouts: true
+    single_num_privileged_obs: 65
+    use_ref_actions: false
+init_state:
+  desc: null
+  value:
+    ang_vel:
+    - 0.0
+    - 0.0
+    - 0.0
+    default_joint_angles:
+      left_leg_roll_joint: 0.0
+      left_leg_yaw_joint: 0.0
+      left_leg_pitch_joint: 0.54
+      left_knee_joint: -1.06
+      left_ankle_joint: -0.4
+      right_leg_roll_joint: 0.0
+      right_leg_yaw_joint: 0.0
+      right_leg_pitch_joint: -0.54
+      right_knee_joint: 1.06
+      right_ankle_joint: 0.4
+    lin_vel:
+    - 0.0
+    - 0.0
+    - 0.0
+    pos:
+    - 0.0
+    - 0.0
+    - 0.56
+    rot:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+noise:
+  desc: null
+  value:
+    add_noise: true
+    noise_level: 0.6
+    noise_scales:
+      ang_vel: 0.1
+      dof_pos: 0.05
+      dof_vel: 0.5
+      height_measurements: 0.1
+      lin_vel: 0.05
+      quat: 0.03
+normalization:
+  desc: null
+  value:
+    clip_actions: 18.0
+    clip_observations: 18.0
+    obs_scales:
+      ang_vel: 1.0
+      dof_pos: 1.0
+      dof_vel: 0.05
+      height_measurements: 5.0
+      lin_vel: 2.0
+      quat: 1.0
+rewards:
+  desc: null
+  value:
+    base_height_target: 0.89
+    cycle_time: 0.64
+    max_contact_force: 700
+    max_dist: 0.5
+    min_dist: 0.2
+    only_positive_rewards: true
+    scales:
+      action_smoothness: -0.002
+      base_acc: 0.2
+      base_height: 0.2
+      collision: -1.0
+      default_joint_pos: 0.5
+      dof_acc: -1.0e-07
+      dof_vel: -0.0005
+      feet_air_time: 1.0
+      feet_clearance: 1.0
+      feet_contact_forces: -0.01
+      feet_contact_number: 1.2
+      feet_distance: 0.2
+      foot_slip: -0.05
+      joint_pos: 1.6
+      knee_distance: 0.2
+      low_speed: 0.2
+      orientation: 1.0
+      torques: -1.0e-05
+      track_vel_hard: 0.5
+      tracking_ang_vel: 1.1
+      tracking_lin_vel: 1.2
+      vel_mismatch_exp: 0.5
+    target_feet_height: 0.06
+    target_joint_pos_scale: 0.17
+    tracking_sigma: 5
+safety:
+  desc: null
+  value:
+    pos_limit: 1.0
+    torque_limit: 0.85
+    vel_limit: 1.0
+sim:
+  desc: null
+  value:
+    dt: 0.001
+    gravity:
+    - 0.0
+    - 0.0
+    - -9.81
+    physx:
+      bounce_threshold_velocity: 0.1
+      contact_collection: 2
+      contact_offset: 0.01
+      default_buffer_size_multiplier: 5
+      max_depenetration_velocity: 1.0
+      max_gpu_contact_pairs: 8388608
+      num_position_iterations: 4
+      num_threads: 10
+      num_velocity_iterations: 1
+      rest_offset: 0.0
+      solver_type: 1
+    substeps: 1
+    up_axis: 1
+terrain:
+  desc: null
+  value:
+    border_size: 25
+    curriculum: false
+    dynamic_friction: 0.6
+    horizontal_scale: 0.1
+    max_init_terrain_level: 10
+    measure_heights: false
+    measured_points_x:
+    - -0.8
+    - -0.7
+    - -0.6
+    - -0.5
+    - -0.4
+    - -0.3
+    - -0.2
+    - -0.1
+    - 0.0
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+    - 0.6
+    - 0.7
+    - 0.8
+    measured_points_y:
+    - -0.5
+    - -0.4
+    - -0.3
+    - -0.2
+    - -0.1
+    - 0.0
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+    mesh_type: plane
+    num_cols: 20
+    num_rows: 20
+    restitution: 0.0
+    selected: false
+    slope_treshold: 0.75
+    static_friction: 0.6
+    terrain_kwargs: null
+    terrain_length: 8.0
+    terrain_proportions:
+    - 0.2
+    - 0.2
+    - 0.4
+    - 0.1
+    - 0.1
+    - 0
+    - 0
+    terrain_width: 8.0
+    vertical_scale: 0.005
+viewer:
+  desc: null
+  value:
+    lookat:
+    - 11.0
+    - 5
+    - 3.0
+    pos:
+    - 10
+    - 0
+    - 6
+    ref_env: 0
+_wandb:
+  desc: null
+  value:
+    python_version: 3.8.19
+    cli_version: 0.17.4
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1733920992
+    t:
+      1:
+      - 1
+      - 55
+      2:
+      - 1
+      - 55
+      3:
+      - 13
+      - 16
+      - 23
+      - 35
+      4: 3.8.19
+      5: 0.17.4
+      8:
+      - 5
+      13: linux-x86_64

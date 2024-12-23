@@ -1,0 +1,1044 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="pandaman">
+  <!-- <mujoco>
+    <compiler 
+    meshdir="" 
+    balanceinertia="true" 
+    discardvisual="false" />
+  </mujoco> -->
+
+  <!-- [CAUTION] uncomment when convert to mujoco -->
+  <!-- <link name="world"></link>
+  <joint name="floating_base_joint" type="floating">
+    <parent link="world" />
+    <child link="base_link" />
+  </joint> -->
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0331873354586547 4.5515291919207E-05 0.124950281684195"
+        rpy="0 0 0" />
+      <mass
+        value="3.0442992" />
+      <inertia
+        ixx="0.0492405"
+        ixy="0.0000073"
+        ixz="-0.0041255"
+        iyy="0.0367544"
+        iyz="-0.0000030"
+        izz="0.0201240" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0. 0.15"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.3 0.3 0.3"/>
+      </geometry>
+    </collision>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/base_link.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <link
+    name="left_leg_roll_link">
+    <inertial>
+      <origin
+        xyz="0.0333363989826576 1.98445291439142E-05 0.0694403731962496"
+        rpy="0 0 0" />
+      <mass
+        value="0.4732576" />
+      <inertia
+        ixx="0.0002979"
+        ixy="0.0000001"
+        ixz="0.0000173"
+        iyy="0.0002582"
+        iyz="0.0000006"
+        izz="0.0003435" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/left_leg_roll_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.647058823529412 0.647058823529412 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/left_leg_roll_link.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="left_leg_roll_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0797 0.085025 0.030367"
+      rpy="-1.5708 1.5696 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_leg_roll_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.23"
+      upper="0.23"
+      effort="25"
+      velocity="25" />
+  </joint>
+  <link
+    name="left_leg_yaw_link">
+    <inertial>
+      <origin
+        xyz="-0.000148345787121092 0.021821016279334 0.079949967914775"
+        rpy="0 0 0" />
+      <mass
+        value="0.7444607" />
+      <inertia
+        ixx="0.0007850"
+        ixy="0.0000010"
+        ixz="0.0000004"
+        iyy="0.0010885"
+        iyz="-0.0000466"
+        izz="0.0005516" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/left_leg_yaw_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.647058823529412 0.647058823529412 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/left_leg_yaw_link.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="left_leg_yaw_joint"
+    type="revolute">
+    <origin
+      xyz="0.027427296577149 -4.90357519718487E-05 0.0769000000009037"
+      rpy="0 -1.5707963267949 3.14159264" />
+    <parent
+      link="left_leg_roll_link" />
+    <child
+      link="left_leg_yaw_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1."
+      upper="1."
+      effort="8"
+      velocity="12" />
+  </joint>
+  <link
+    name="left_leg_pitch_link">
+    <inertial>
+      <origin
+        xyz="0.0022860653774763 0.045860679162005 0.0269764283563071"
+        rpy="0 0 0" />
+      <mass
+        value="1.2968050" />
+      <inertia
+        ixx="0.0053775"
+        ixy="0.0000437"
+        ixz="0.0002180"
+        iyy="0.0056078"
+        iyz="-0.0008022"
+        izz="0.0013946" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/left_leg_pitch_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/left_leg_pitch_link.STL" />
+      </geometry>
+    </collision> -->
+    <!-- <collision>
+      <origin
+        xyz="0 0.07 0"
+        rpy="1.57201220027834 0 0" />
+      <geometry>
+         <cylinder length="0.25" radius="0.05"/>
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="left_leg_pitch_joint"
+    type="revolute">
+    <origin
+      xyz="4.51043293177786E-05 -0.00869988308054018 0.0937500000000008"
+      rpy="1.57201220027834 0 0" />
+    <parent
+      link="left_leg_yaw_link" />
+    <child
+      link="left_leg_pitch_link" />
+    <axis
+      xyz="-0.00518440566846097 -0.00121585684358836 -0.999985821714488" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="25"
+      velocity="25" />
+  </joint>
+  <link
+    name="left_knee_link">
+    <inertial>
+      <origin
+        xyz="0.0083434 0.094639 0.0035809"
+        rpy="0 0 0" />
+      <mass
+        value="0.5615317" />
+      <inertia
+        ixx="0.0015230"
+        ixy="-0.0000156"
+        ixz="-0.0000416"
+        iyy="0.0015438"
+        iyz="-0.0000624"
+        izz="0.0001387" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/left_knee_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.20392 0.20392 0.20392 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0.1 0"
+        rpy="1.57201220027834 0 0" />
+      <geometry>
+         <cylinder length="0.25" radius="0.04"/>
+      </geometry>
+    </collision> -->
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/left_knee_link.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="left_knee_joint"
+    type="revolute">
+    <origin
+      xyz="-0.00413127816477701 0.249167408782082 0.0116186310550433"
+      rpy="-0.00144026002729725 0.00512662727904704 -0.0435199600640853" />
+    <parent
+      link="left_leg_pitch_link" />
+    <child
+      link="left_knee_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1.8"
+      upper="0"
+      effort="40"
+      velocity="20" />
+  </joint>
+  <link
+    name="left_ankle_link">
+    <inertial>
+      <origin
+        xyz="-0.0024626 0.010125 -0.0007128"
+        rpy="0 0 0" />
+      <mass
+        value="0.0248078" />
+      <inertia
+        ixx="0.0000020"
+        ixy="0.0000001"
+        ixz="-0.0000006"
+        iyy="0.0000229"
+        iyz="0.0000000"
+        izz="0.0000213" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/left_ankle_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.20392 0.20392 0.20392 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0.013 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.1 0.02 0.02"/>
+      </geometry>
+    </collision> -->
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/left_ankle_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_ankle_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.269328458767425 0.00059999999999949"
+      rpy="0 0 0.0435131164049318" />
+    <parent
+      link="left_knee_link" />
+    <child
+      link="left_ankle_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.75"
+      upper="0.75"
+      effort="27"
+      velocity="27" />
+  </joint>
+  <link
+    name="right_leg_roll_link">
+    <inertial>
+      <origin
+        xyz="0.0333363069717779 -9.44715715036556E-05 0.0694403746452683"
+        rpy="0 0 0" />
+      <mass
+        value="0.4732576" />
+      <inertia
+        ixx="0.0002289"
+        ixy="0.0000000"
+        ixz="0.0000169"
+        iyy="0.0001887"
+        iyz="-0.0000006"
+        izz="0.0002623" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/right_leg_roll_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.647058823529412 0.647058823529412 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/right_leg_roll_link.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="right_leg_roll_joint"
+    type="revolute">
+    <origin
+      xyz="-0.0797 -0.084975 0.030367"
+      rpy="1.5708 1.5696 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_leg_roll_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.23"
+      upper="0.23"
+      effort="25"
+      velocity="25" />
+  </joint>
+  <link
+    name="right_leg_yaw_link">
+    <inertial>
+      <origin
+        xyz="-0.00014834578711901 -0.0218210162793304 0.079949967914775"
+        rpy="0 0 0" />
+      <mass
+        value="0.7444607" />
+      <inertia
+        ixx="0.0007850"
+        ixy="-0.0000010"
+        ixz="0.0000004"
+        iyy="0.0010885"
+        iyz="0.0000466"
+        izz="0.0005516" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/right_leg_yaw_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.647058823529412 0.647058823529412 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/right_leg_yaw_link.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="right_leg_yaw_joint"
+    type="revolute">
+    <origin
+      xyz="0.0274272058402329 -2.55911512636667E-05 0.0769000000009016"
+      rpy="0 -1.5707963267949 3.14159264" />
+    <parent
+      link="right_leg_roll_link" />
+    <child
+      link="right_leg_yaw_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1."
+      upper="1."
+      effort="8"
+      velocity="12" />
+  </joint>
+  <link
+    name="right_leg_pitch_link">
+    <inertial>
+      <origin
+        xyz="0.00218651510857458 0.0458463075316608 -0.0270436580586413"
+        rpy="0 0 0" />
+      <mass
+        value="1.2968050" />
+      <inertia
+        ixx="0.0053733"
+        ixy="-0.0000410"
+        ixz="0.0002139"
+        iyy="0.0056057"
+        iyz="0.0008010"
+        izz="0.0013966" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/right_leg_pitch_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.203921568627451 0.203921568627451 0.203921568627451 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0.07 0"
+        rpy="1.57201220027834 0 0" />
+      <geometry>
+         <cylinder length="0.25" radius="0.05"/>
+      </geometry>
+    </collision> -->
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/right_leg_pitch_link.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="right_leg_pitch_joint"
+    type="revolute">
+    <origin
+      xyz="4.5104329319208E-05 0.00869988308054358 0.0937500000000019"
+      rpy="1.5707963267949 0 -0.00518442889321215" />
+    <parent
+      link="right_leg_yaw_link" />
+    <child
+      link="right_leg_pitch_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="25"
+      velocity="25" />
+  </joint>
+  <link
+    name="right_knee_link">
+    <inertial>
+      <origin
+        xyz="0.00831639289324045 0.0952055096005982 -0.00356711636080762"
+        rpy="0 0 0" />
+      <mass
+        value="0.5615317" />
+      <inertia
+        ixx="0.0015230"
+        ixy="0.0000156"
+        ixz="-0.0000416"
+        iyy="0.0015438"
+        iyz="0.0000624"
+        izz="0.0001387" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/right_knee_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0.1 0"
+        rpy="1.57201220027834 0 0" />
+      <geometry>
+         <cylinder length="0.25" radius="0.04"/>
+      </geometry>
+    </collision> -->
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/right_knee_link.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="right_knee_joint"
+    type="revolute">
+    <origin
+      xyz="-0.00419302894285712 0.249153097822061 -0.0119"
+      rpy="0 0 -0.0435131164049318" />
+    <parent
+      link="right_leg_pitch_link" />
+    <child
+      link="right_knee_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="1.8"
+      effort="40"
+      velocity="20" />
+  </joint>
+  <link
+    name="right_ankle_link">
+    <inertial>
+      <origin
+        xyz="-0.00278514161119511 0.00995055216984608 0.000706631011076556"
+        rpy="0 0 0" />
+      <mass
+        value="0.0248078" />
+      <inertia
+        ixx="0.0000020"
+        ixy="-0.0000001"
+        ixz="-0.0000006"
+        iyy="0.0000229"
+        iyz="0.0000000"
+        izz="0.0000213" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/right_ankle_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0.013 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.1 0.02 0.02"/>
+      </geometry>
+    </collision> -->
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/right_ankle_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_ankle_joint"
+    type="revolute">
+    <origin
+      xyz="0 0.269328458767426 -0.000600000000000531"
+      rpy="0 0 0.0435131164049318" />
+    <parent
+      link="right_knee_link" />
+    <child
+      link="right_ankle_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-0.75"
+      upper="0.75"
+      effort="27"
+      velocity="27" />
+  </joint>
+  <link
+    name="left_shoulder_link">
+    <inertial>
+      <origin
+        xyz="-2.49399007001827E-09 -0.00573503745778248 0.0610320269286271"
+        rpy="0 0 0" />
+      <mass
+        value="0.4098108" />
+      <inertia
+        ixx="0.0001853"
+        ixy="-0.0000101"
+        ixz="0.0000001"
+        iyy="0.0002211"
+        iyz="0.0000000"
+        izz="0.0002280" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/left_shoulder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.647058823529412 0.647058823529412 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/left_shoulder_link.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="left_shoulder_joint"
+    type="fixed">
+    <origin
+      xyz="-0.02645 0.090595 0.25214"
+      rpy="-1.5708 1.5703 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_shoulder_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="left_arm_link">
+    <inertial>
+      <origin
+        xyz="-0.00346099303716582 -0.0987357175959109 -0.0478975599830672"
+        rpy="0 0 0" />
+      <mass
+        value="0.5235383" />
+      <inertia
+        ixx="0.0028264"
+        ixy="0.0000083"
+        ixz="-0.0000951"
+        iyy="0.0028504"
+        iyz="0.0002442"
+        izz="0.0002194" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/left_arm_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/left_arm_link.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="left_arm_joint"
+    type="fixed">
+    <origin
+      xyz="0 0.00255000000000044 0.0709500000000051"
+      rpy="1.5707963267949 -1.5707963267949 0" />
+    <parent
+      link="left_shoulder_link" />
+    <child
+      link="left_arm_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="left_forearm_link">
+    <inertial>
+      <origin
+        xyz="-0.00174520564055404 -0.0615939019916411 -0.0227257427772349"
+        rpy="0 0 0" />
+      <mass
+        value="0.1478829" />
+      <inertia
+        ixx="0.0008886"
+        ixy="-0.0000005"
+        ixz="-0.0000228"
+        iyy="0.0009100"
+        iyz="-0.0000160"
+        izz="0.0000362" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/left_forearm_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.203921568627451 0.203921568627451 0.203921568627451 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/left_forearm_link.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="left_forearm_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00617818018200829 -0.174890937971439 -0.0585"
+      rpy="-0.000738587502016626 0 0" />
+    <parent
+      link="left_arm_link" />
+    <child
+      link="left_forearm_link" />
+    <axis
+      xyz="0 -0.000738587434865195 0.999999727244263" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="right_shoulder_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.4098108" />
+      <inertia
+        ixx="0.0001164"
+        ixy="0.0000097"
+        ixz="0.0000000"
+        iyy="0.0001399"
+        iyz="0.0000000"
+        izz="0.0001585" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/right_shoulder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/right_shoulder_link.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="right_shoulder_joint"
+    type="fixed">
+    <origin
+      xyz="-0.02645 -0.0906199919722327 0.252139702416128"
+      rpy="1.5707963267949 1.57031904081343 1.57079632679489" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_shoulder_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="right_arm_link">
+    <inertial>
+      <origin
+        xyz="-0.00346099506321791 -0.0987357174719271 0.0478975584401603"
+        rpy="0 0 0" />
+      <mass
+        value="0.5235382" />
+      <inertia
+        ixx="0.0027574"
+        ixy="-0.0000088"
+        ixz="-0.0000952"
+        iyy="0.0027692"
+        iyz="-0.0002442"
+        izz="0.0001499" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/right_arm_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.203921568627451 0.203921568627451 0.203921568627451 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/right_arm_link.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="right_arm_joint"
+    type="fixed">
+    <origin
+      xyz="0 -0.00255000000000005 0.0709500000000051"
+      rpy="1.5707963267949 -1.5707963267949 0" />
+    <parent
+      link="right_shoulder_link" />
+    <child
+      link="right_arm_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="100" />
+  </joint>
+  <link
+    name="right_forearm_link">
+    <inertial>
+      <origin
+        xyz="-0.00174520004551028 -0.0616214057990604 0.02265083868036"
+        rpy="0 0 0" />
+      <mass
+        value="0.1478829" />
+      <inertia
+        ixx="0.0008886"
+        ixy="0.0000005"
+        ixz="-0.0000228"
+        iyy="0.0009100"
+        iyz="0.0000160"
+        izz="0.0000362" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/right_forearm_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.647058823529412 0.647058823529412 0.647058823529412 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/home/lee/humanoid-gym/resources/robots/pandaman/meshes/right_forearm_link.STL" />
+      </geometry>
+    </collision> -->
+  </link>
+  <joint
+    name="right_forearm_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00617818018200829 -0.174890937971439 0.0584999999999999"
+      rpy="-0.000477285981425128 0 0" />
+    <parent
+      link="right_arm_link" />
+    <child
+      link="right_forearm_link" />
+    <axis
+      xyz="0 0.000477285963304152 -0.999999886099048" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="100" />
+  </joint>
+</robot>
