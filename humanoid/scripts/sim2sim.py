@@ -35,12 +35,12 @@ from tqdm import tqdm
 from collections import deque
 from scipy.spatial.transform import Rotation as R
 from humanoid import LEGGED_GYM_ROOT_DIR
-from humanoid.envs import XBotLCfg
+from humanoid.envs import XBotLCfg,PandamanCfg
 import torch
 
 
 class cmd:
-    vx = 0.4
+    vx = 0.6
     vy = 0.0
     dyaw = 0.0
 
@@ -110,6 +110,19 @@ def run_mujoco(policy, cfg):
 
     count_lowlevel = 0
 
+    default_angle =np.zeros((cfg.env.num_actions),dtype=np.double)
+
+    default_angle[0]=cfg.init_state.default_joint_angles['left_leg_roll_joint']
+    default_angle[1]=cfg.init_state.default_joint_angles['left_leg_yaw_joint']
+    default_angle[2]=cfg.init_state.default_joint_angles['left_leg_pitch_joint']
+    default_angle[3]=cfg.init_state.default_joint_angles['left_knee_joint']
+    default_angle[4]=cfg.init_state.default_joint_angles['left_ankle_joint']
+    default_angle[5]=cfg.init_state.default_joint_angles['right_leg_roll_joint']
+    default_angle[6]=cfg.init_state.default_joint_angles['right_leg_yaw_joint']
+    default_angle[7]=cfg.init_state.default_joint_angles['right_leg_pitch_joint']
+    default_angle[8]=cfg.init_state.default_joint_angles['right_knee_joint']
+    default_angle[9]=cfg.init_state.default_joint_angles['right_ankle_joint']
+
 
     for _ in tqdm(range(int(cfg.sim_config.sim_duration / cfg.sim_config.dt)), desc="Simulating..."):
 
@@ -130,11 +143,11 @@ def run_mujoco(policy, cfg):
             obs[0, 2] = cmd.vx * cfg.normalization.obs_scales.lin_vel
             obs[0, 3] = cmd.vy * cfg.normalization.obs_scales.lin_vel
             obs[0, 4] = cmd.dyaw * cfg.normalization.obs_scales.ang_vel
-            obs[0, 5:17] = q * cfg.normalization.obs_scales.dof_pos
-            obs[0, 17:29] = dq * cfg.normalization.obs_scales.dof_vel
-            obs[0, 29:41] = action
-            obs[0, 41:44] = omega
-            obs[0, 44:47] = eu_ang
+            obs[0, 5:15] = (q-default_angle) * cfg.normalization.obs_scales.dof_pos
+            obs[0, 15:25] = dq * cfg.normalization.obs_scales.dof_vel
+            obs[0, 25:35] = action
+            obs[0, 35:38] = omega
+            obs[0, 38:41] = eu_ang
 
             obs = np.clip(obs, -cfg.normalization.clip_observations, cfg.normalization.clip_observations)
 
@@ -147,7 +160,11 @@ def run_mujoco(policy, cfg):
             action[:] = policy(torch.tensor(policy_input))[0].detach().numpy()
             action = np.clip(action, -cfg.normalization.clip_actions, cfg.normalization.clip_actions)
 
-            target_q = action * cfg.control.action_scale
+            if count_lowlevel>800:
+                target_q = action * cfg.control.action_scale+default_angle
+            else:
+                target_q = default_angle
+            
 
 
         target_dq = np.zeros((cfg.env.num_actions), dtype=np.double)
@@ -168,26 +185,26 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(description='Deployment script.')
-    parser.add_argument('--load_model', type=str, required=True,
+    parser.add_argument('--load_model', type=str, default='/home/lee/humanoid-gym/logs/Pandaman_ppo/exported/policies/policy_1.pt',
                         help='Run to load from.')
-    parser.add_argument('--terrain', action='store_true', help='terrain or plane')
+    parser.add_argument('--terrain', action='store_true',default='plane', help='terrain or plane')
     args = parser.parse_args()
 
-    class Sim2simCfg(XBotLCfg):
+    class Sim2simCfg(PandamanCfg):
 
         class sim_config:
             if args.terrain:
-                mujoco_model_path = f'{LEGGED_GYM_ROOT_DIR}/resources/robots/XBot/mjcf/XBot-L-terrain.xml'
+                mujoco_model_path = f'{LEGGED_GYM_ROOT_DIR}/resources/robots/pandaman/mjcf/pandaman.xml'
             else:
-                mujoco_model_path = f'{LEGGED_GYM_ROOT_DIR}/resources/robots/XBot/mjcf/XBot-L.xml'
+                mujoco_model_path = f'{LEGGED_GYM_ROOT_DIR}/resources/robots/pandaman/mjcf/pandaman.xml'
             sim_duration = 60.0
             dt = 0.001
             decimation = 10
 
         class robot_config:
-            kps = np.array([200, 200, 350, 350, 15, 15, 200, 200, 350, 350, 15, 15], dtype=np.double)
-            kds = np.array([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10], dtype=np.double)
-            tau_limit = 200. * np.ones(12, dtype=np.double)
+            kps = np.array([20,20,20,20,10,20,20,20,20,10], dtype=np.double)
+            kds = np.array([0.15,0.15,0.15,0.25,0.15,0.15,0.15,0.15,0.25,0.15], dtype=np.double)
+            tau_limit = 200. * np.ones(10, dtype=np.double)
 
     policy = torch.jit.load(args.load_model)
     run_mujoco(policy, Sim2simCfg())

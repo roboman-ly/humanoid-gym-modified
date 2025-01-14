@@ -4,19 +4,18 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="pandaman">
-  <!-- <mujoco>
+  <mujoco>
     <compiler 
     meshdir="" 
     balanceinertia="true" 
     discardvisual="false" />
-  </mujoco> -->
+  </mujoco>
 
-  <!-- [CAUTION] uncomment when convert to mujoco -->
-  <!-- <link name="world"></link>
+  <link name="world"></link>
   <joint name="floating_base_joint" type="floating">
     <parent link="world" />
-    <child link="base_link" />
-  </joint> -->
+    <child link="base_link" /> 
+  </joint> 
   <link
     name="base_link">
     <inertial>

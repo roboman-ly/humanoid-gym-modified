@@ -172,7 +172,7 @@ class PandamanCfg(LeggedRobotCfg):
             heading = [-3.14, 3.14]
 
     class rewards:
-        base_height_target = 0.89
+        base_height_target = 0.56
         min_dist = 0.2
         max_dist = 0.5
         # put some settings here for LLM parameter tuning

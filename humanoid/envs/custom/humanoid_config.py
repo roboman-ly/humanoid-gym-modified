@@ -256,6 +256,6 @@ class XBotLCfgPPO(LeggedRobotCfgPPO):
         run_name = ''
         # Load and resume
         resume = False
-        load_run = -1  # -1 = last run
-        checkpoint = -1  # -1 = last saved model
+        load_run = '/home/lee/humanoid-gym1/logs/Pandaman_ppo/ankle_v27'  # -1 = last run
+        checkpoint = '20000'  # -1 = last saved model
         resume_path = None  # updated from load_run and chkpt
